@@ -1,0 +1,13 @@
+.tag {
+   margin: 5px;
+   padding: 10px;
+   background-color: lightgoldenrodyellow;
+}
+
+.tagText {
+   font-family: 'Varela Round', sans-serif;
+   font-size: 20px;
+   color: #be9656;
+   line-height: 20px;
+   cursor: pointer;
+}
