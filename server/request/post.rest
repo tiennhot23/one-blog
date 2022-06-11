@@ -1,0 +1,6 @@
+PUT http://localhost:3000/posts/restful-api
+Content-Type: application/json
+
+{
+   "title": "rest api"
+}
