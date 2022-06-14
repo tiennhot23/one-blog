@@ -1,21 +1,22 @@
 import './post.css'
 
-export default function Post() {
+export default function Post({ post }) {
    return (
       <div className='post'>
          <img
             className='postImg'
-            src='https://cdn.lifehack.org/wp-content/uploads/2015/11/10164555/blog-header-design.jpg'
+            src={post.image}
             alt='' />
          <div className='postInfo'>
             <div className="postCats">
-               <span className="postCat">Music</span>
-               <span className="postCat">Life</span>
+               {post.tags.map(tag => (
+                  <span className="postCat" key={tag}>{tag}</span>
+               ))}
             </div>
-            <span className="postTitle">This is a post title</span>
+            <span className="postTitle">{post.title}</span>
             <hr />
-            <span className="postDate">1 hour ago</span>
+            <span className="postDate"> {new Date(post.createdAt).toDateString()}</span>
          </div>
-      </div>
+      </div >
    )
 }

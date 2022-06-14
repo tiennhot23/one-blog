@@ -11,3 +11,17 @@
    line-height: 20px;
    cursor: pointer;
 }
+
+.selectedTag {
+   margin: 5px;
+   padding: 10px;
+   background-color: black;
+}
+
+.selectedTagText {
+   font-family: 'Varela Round', sans-serif;
+   font-size: 20px;
+   color: #fff;
+   line-height: 20px;
+   cursor: pointer;
+}

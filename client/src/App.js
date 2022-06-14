@@ -7,17 +7,21 @@ import {
    Routes,
 } from 'react-router-dom'
 import TopBar from './components/topbar/TopBar'
+import store from "./redux/store"
+import { Provider } from "react-redux"
 
 function App() {
    return (
-      <Router>
-         <TopBar />
-         <Routes>
-            <Route exact path="/write" element={<Write />} />
-            <Route path="/post/:postId" element={<Single />} />
-            <Route path="*" element={<Home />} />
-         </Routes>
-      </Router>
+      <Provider store={store}>
+         <Router>
+            <TopBar />
+            <Routes>
+               <Route exact path="/write" element={<Write />} />
+               <Route path="/post/:postId" element={<Single />} />
+               <Route path="*" element={<Home />} />
+            </Routes>
+         </Router>
+      </Provider>
    )
 }
 
