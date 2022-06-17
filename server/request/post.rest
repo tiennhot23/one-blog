@@ -1,6 +1,11 @@
-PUT http://localhost:3000/posts/restful-api
+POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-   "title": "rest api"
+   "title": "rest api",
+   "image": "http://localhost:5000/file/1655450938819-67666744_1113117292222209_7716881909543862272_o.jpg",
+   "markdown": "# What",
+   "tags": [
+      "nodejs", "express"
+   ]
 }

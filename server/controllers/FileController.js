@@ -75,6 +75,15 @@ file.deleteOne = (filename, gfs) => {
    })
 }
 
+file.deleteFileAndChunk = (file_id) => {
+   return new Promise((resolve, reject) => {
+      const gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, { bucketName: 'photos' })
+      gridFSBucket.delete(file_id)
+         .then(res => resolve(res))
+         .catch(err => reject(err))
+   })
+}
+
 
 
 /**

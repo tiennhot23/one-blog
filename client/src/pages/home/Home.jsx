@@ -4,13 +4,11 @@ import Posts from '../../components/posts/Posts'
 
 export default function Home() {
    return (
-      <div>
-         <>
-            <Header />
-            <div className='home'>
-               <Posts />
-            </div>
-         </>
-      </div>
+      <>
+         <Header />
+         <div className='home'>
+            <Posts />
+         </div>
+      </>
    )
 }

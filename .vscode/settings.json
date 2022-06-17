@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "javascript.format.semicolons": "remove",
+    "editor.tabSize": 3,
+    "files.associations": {
+        "*.js": "javascriptreact"
+    }
+}

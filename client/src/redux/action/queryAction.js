@@ -1,8 +1,8 @@
 export const SET_QUERY = 'SET_QUERY'
 
-export const actionSetQuery = ({ query }) => {
+export const actionSetQuery = (query) => {
    return {
       type: SET_QUERY,
-      tag: query,
+      query: query,
    }
 }

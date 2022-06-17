@@ -1,8 +1,10 @@
 const express = require('express')
 
 const Post = require('../models/Post')
+const FileController = require('../controllers/FileController')
 const PostController = require('../controllers/PostController')
 const Constants = require('../configs/constants')
+const Message = require('../configs/message')
 
 const router = express.Router()
 
@@ -62,7 +64,7 @@ router.get('/:slug', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-   const post = new Post({
+   let post = new Post({
       ...req.body
    })
    try {
@@ -81,12 +83,18 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:slug', async (req, res, next) => {
    try {
-      const post = await PostController.delete(req.params.slug)
+      let post = await PostController.get_detail(req.params.slug)
+      const files = await FileController.findByName([post.image.split('/')[4]])
+      const files_id = files.length > 0 ? files[0]._id : null
+      if (!files_id) return res.status(400).json({ message: Message.File.not_exist })
+      await FileController.deleteFileAndChunk(files_id)
+      post = await PostController.delete(req.params.slug)
       res.status(200).json({
          code: 200,
          data: [post]
       })
    } catch (err) {
+      console.log(err)
       res.status(500).json({
          code: 500,
          message: err.message

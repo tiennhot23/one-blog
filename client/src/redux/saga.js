@@ -1,10 +1,15 @@
 import { takeLatest, put, call } from 'redux-saga/effects'
 import { FETCH_POSTS, FETCH_MORE_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAIL } from './action/action'
 
-const fetchPosts = (payload) =>
-   fetch(`/posts?query=${payload.query}`)
-      .then(response => response.json())
-      .catch(err => { throw err })
+const fetchPosts = (payload) => {
+   let url = `/posts?query=${payload.query}`
+   payload.tags.map(tag => url += `&tags[]=${tag}`)
+   console.log(url);
+   return fetch(url)
+   .then(response => response.json())
+   .catch(err => { throw err })
+}
+   
 
 
 function* sagaWatcher() {

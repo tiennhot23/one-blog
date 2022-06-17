@@ -59,12 +59,22 @@ postSchema.pre('validate', function (next) {
    next()
 })
 
-postSchema.pre('updateOne', function (next) {
+postSchema.pre('findOneAndUpdate', function (next) {
    var title = this._update.title
    console.log(this._update)
    if (title) {
       try {
          this._update.slug = slugify(title, { lower: true, strict: true })
+      } catch (e) {
+         next(e)
+         return
+      }
+   }
+
+   var markdown = this._update.markdown
+   if (markdown) {
+      try {
+         this._update.sanitizedHtml = dompurify.sanitize(marked.parse(markdown))
       } catch (e) {
          next(e)
          return

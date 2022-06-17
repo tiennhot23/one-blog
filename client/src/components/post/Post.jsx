@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import './post.css'
 
 export default function Post({ post }) {
    return (
-      <div className='post'>
+      <Link to={`/post/${post.slug}`} className='post link'>
          <img
             className='postImg'
             src={post.image}
@@ -17,6 +18,6 @@ export default function Post({ post }) {
             <hr />
             <span className="postDate"> {new Date(post.createdAt).toDateString()}</span>
          </div>
-      </div >
+      </Link>
    )
 }

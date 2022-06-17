@@ -72,3 +72,17 @@
    height: 1px;
    background-color: black;
 }
+
+.writeTags {
+   margin-bottom: 20px;
+   font-size: 16px;
+   font-family: 'Varela Round', sans-serif;
+   color: #b39656;
+   border: none;
+   font-weight: bold;
+   width: 100%;
+}
+
+.writeTags:focus {
+   outline: none;
+}

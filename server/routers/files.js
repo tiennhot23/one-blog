@@ -40,7 +40,7 @@ router.delete('/:filename', async (req, res) => {
 router.post('/upload', upload.single('file'), async (req, res) => {
    if (req.file === undefined) res.status(400).json({ message: Message.File.choose_file })
    const imgUrl = constants.fileBaseURL + `${req.file.filename}`
-   return res.send(imgUrl)
+   return res.json(imgUrl)
 })
 
 router.delete('/del/del', async (req, res, next) => {
